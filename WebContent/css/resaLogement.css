@@ -1,0 +1,155 @@
+@CHARSET "ISO-8859-1";
+
+html, body {
+	font-family: Verdana, Arial, sans-serif ;
+  	font-size: 12px;
+	min-height:100%; 
+	padding:0; 
+	margin:0;
+}
+
+.wrapper {
+	padding-top:0px; 
+	padding-bottom: 210px; 
+	padding-left: 0; 
+	padding-right: 0; 
+	position:absolute; 
+	top:0; 
+	bottom:0; 
+	left:0; 
+	right:0;
+}
+
+.row.main-content {
+  	margin: 0;
+  	position: relative;
+  	min-height:100%;
+}
+  
+.row.main-content > .container-fluid {
+	padding-top: 10px;
+	padding-bottom: 20px;
+	min-height: calc(100vh - 212px);
+	min-height: -o-calc(100vh - 212px);
+	min-height: -webkit-calc(100vh - 212px);
+	min-height: -moz-calc(100vh - 212px);
+	position: relative;
+}
+
+.container-fluid {
+    max-width: 970px;
+}
+
+.box-shadow {
+  -moz-box-shadow: 0px 5px 30px 0px #9b9b9b;
+  -webkit-box-shadow: 0px 5px 30px 0px #9b9b9b;
+  -o-box-shadow: 0px 5px 30px 0px #9b9b9b;
+  box-shadow: 0px 5px 30px 0px #9b9b9b; 
+}
+
+.titre {
+	text-align: center;
+	font-weight: bolder;
+	font-size: 24px;
+}
+#imgAccueil {
+	max-height: 400px;
+	max-width:630px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+#logo {
+	height: 50px;
+	width: 94px;
+	vertical-align: top;
+	margin-top: 20px;
+	text-align: center;
+}
+
+#logoTitre {
+	font-size: 36px;
+	color: #797D7F;
+	padding-top: 20px;
+}
+
+#laMarque {
+	vertical-align: center;
+}
+
+#selection {
+	width: 150px;
+}
+
+.input-group-addon {
+    min-width: 220px;
+    text-align: right;
+}
+
+header {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	background: url(../images/portail-header.jpg) no-repeat center 0; 
+	margin-top:0px; 
+	height:130px;
+}
+
+header .top {
+	background: #fff;
+	-webkit-border-radius: 25px 25px 0 0;
+	-moz-border-radius: 25px 25px 0 0;
+	-ms-border-radius: 25px 25px 0 0;
+	border-radius: 25px 25px 0 0;
+	margin-top: 0;
+	height: 80px;
+}
+
+nav.navbar.navbar-default {
+    z-index: 100;
+    position: relative;
+    max-width: 3000px;
+    min-height: 1px;
+    font-size: 11px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+}
+
+.gradient-bleu {
+	background: -moz-linear-gradient(top, rgba(46, 64, 83, 0.4) 0%, rgba(46, 64, 83, 0.4) 100%);
+	/* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(154, 159, 165, 0.4)), color-stop(100%, rgba(154, 159, 165, 0.4)));
+	/* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(46, 64, 83, 0.4) 0%, rgba(46, 64, 83, 0.4) 100%);
+	/* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(154, 159, 165, 0.4) 0%, rgba(154, 159, 165, 0.4) 100%);
+	/* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(154, 159, 165, 0.4) 0%, rgba(154, 159, 165, 0.4) 100%);
+	/* IE10+ */
+	background: linear-gradient(to bottom, rgba(46, 64, 83, 0.4) 0%, rgba(46, 64, 83, 0.4) 100%);
+	/* W3C */
+	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#660098a1', endColorstr='#660098a1',GradientType=0 );*/
+	/* IE6-9 */ 
+}
+
+footer {
+    font-family: Arial, Helvetica, sans-serif;
+    background: url(../images/portail-header.jpg) no-repeat center 0;
+    width: 100%;
+    font-size: 13px;
+    margin-bottom: -66px;
+    height: 66px;
+}
+
+footer .bottom {
+    background: #fff;
+    -webkit-border-radius: 0 0 25px 25px;
+    -moz-border-radius: 0 0 25px 25px;
+    -ms-border-radius: 0 0 25px 25px;
+    border-radius: 0 0 25px 25px;
+    margin-bottom: 0px;
+    padding-bottom: 15px;
+}
+

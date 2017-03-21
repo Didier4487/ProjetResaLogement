@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>resaLogement</display-name>
+ 	<servlet>
+		<servlet-name>GestionProprietaire</servlet-name>
+		<servlet-class>fr.resaLogement.servlets.GestionProprietaire</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GestionProprietaire</servlet-name>
+		<url-pattern>/proprietaire</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GestionAdresse</servlet-name>
+		<servlet-class>fr.resaLogement.servlets.GestionAdresse</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GestionAdresse</servlet-name>
+		<url-pattern>/adresse</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GestionLogement</servlet-name>
+		<servlet-class>fr.resaLogement.servlets.GestionLogement</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GestionLogement</servlet-name>
+		<url-pattern>/logement</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RechercheLogements</servlet-name>
+		<servlet-class>fr.resaLogement.servlets.RechercheLogements</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>RechercheLogements</servlet-name>
+		<url-pattern>/rechercher</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AccueilServlet</servlet-name>
+		<servlet-class>fr.resaLogement.servlets.AccueilServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>AccueilServlet</servlet-name>
+		<url-pattern>/accueil</url-pattern>
+	</servlet-mapping>
+ 	
+ 	<servlet>
+		<servlet-name>AfficherPlanning</servlet-name>
+		<servlet-class>fr.resaLogement.servlets.AfficherPlanning</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>AfficherPlanning</servlet-name>
+		<url-pattern>/planning</url-pattern>
+	</servlet-mapping>
+</web-app>
