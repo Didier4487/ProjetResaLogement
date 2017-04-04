@@ -24,7 +24,7 @@ public class GestionLogement extends HttpServlet {
 		request.setAttribute("logements", logementBDD.getLogements());
 		request.setAttribute("proprietaires", proprietaireBDD.getProprietaires());
 
-		this.getServletContext().getRequestDispatcher("/jsp/logement.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/logement.jsp").forward(request, response);
 		
 	}
 	
@@ -45,7 +45,6 @@ public class GestionLogement extends HttpServlet {
 		
 		adresseBDD.setAdresse(numRue, nomRue, codePostal, ville);
 	
-		
 		int convIdProprietaire = Integer.parseInt(idProprietaire);
 		int idAdresse = adresseBDD.retournerIdAdresseCree();
 		
@@ -58,7 +57,7 @@ public class GestionLogement extends HttpServlet {
 		request.setAttribute("logements", logementBDD.getLogements());
 		request.setAttribute("proprietaires", proprietaireBDD.getProprietaires());
 
-		this.getServletContext().getRequestDispatcher("/jsp/logement.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/logement.jsp").forward(request, response);
 			
 		}
 	}

@@ -17,13 +17,18 @@ public class DisponibiliteBDD {
 			ConnexionBDD connexionBDD = new ConnexionBDD();
 			Statement stmt = connexionBDD.seConnecter();						
 			
-			//String maRequete =  "SELECT DISTINCT date_format(disponibilite.dateDispo,'%d/%m/%Y'), disponibilite.disponibilite ";
-			String maRequete =  "SELECT DISTINCT disponibilite.dateDispo, disponibilite.disponibilite ";
-			maRequete += "FROM disponibilite ";
-			maRequete += "JOIN logement ON disponibilite.logement_idLogement = logement.idLogement ";
-			maRequete += "JOIN adresse ON adresse.idAdresse = logement.adresse_IdAdresse ";
-			maRequete += "JOIN proprietaire ON proprietaire.idProprietaire = logement.proprietaire_idProprietaire ";
-			maRequete += "WHERE disponibilite.disponibilite = false AND adresse.ville = '" + ville + "';";
+			String maRequete =  "SELECT DISTINCT disponibilite.dateDispo, disponibilite.disponibilite, proprietaire.nom, "
+											+ "proprietaire.prenom, adresse.numRue, adresse.nomRue, adresse.codePostal, "
+											+ "adresse.ville, logement.description "
+											+ "FROM disponibilite "
+											+ "JOIN logement "
+											+ "ON disponibilite.logement_idLogement = logement.idLogement "
+											+ "JOIN adresse "
+											+ "ON adresse.idAdresse = logement.adresse_IdAdresse "
+											+ "JOIN proprietaire "
+											+ "ON proprietaire.idProprietaire = logement.proprietaire_idProprietaire "
+											+ "WHERE disponibilite.disponibilite = false AND adresse.ville = '" + ville + "';";
+			
 			ResultSet resultat = stmt.executeQuery(maRequete);
 			
 			while (resultat.next()) {
@@ -31,6 +36,7 @@ public class DisponibiliteBDD {
 					
 				disponibilite.setDateDispo(resultat.getString(1));
 				disponibilite.setDisponibilite(resultat.getString(2));
+		
 				
 				disponibilites.add(disponibilite);								
 			}

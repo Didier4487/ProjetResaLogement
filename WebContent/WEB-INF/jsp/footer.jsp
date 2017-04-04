@@ -6,10 +6,10 @@
 			<div class="col-xs-12">
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="#">A propos du site</a>
+						<a id="lien_footer" href="#">A propos du site</a>
 					</li>
 					<li>						
-						<a href="mailto:didier.raynaud87@gmail.com">Nous contacter</a>						
+						<a id="lien_footer" href="mailto:didier.raynaud87@gmail.com">Nous contacter</a>						
 					</li>
 				</ul>				
 			</div>

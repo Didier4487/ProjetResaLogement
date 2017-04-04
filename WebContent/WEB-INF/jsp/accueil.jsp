@@ -12,7 +12,7 @@
 	<body>
 		<div class="wrapper">
 		    <!-- header -->
-		   	<jsp:include page="/jsp/header.jsp" flush="true"></jsp:include>
+		   	<jsp:include page="header.jsp"></jsp:include>
 		   	
 		   	<!-- contenu -->
 		   	<div class="row main-content">
@@ -26,7 +26,7 @@
 		    	</div>
 	    	</div>
 	    	<!-- footer -->	 
-	    	<jsp:include page="/jsp/footer.jsp" flush="true"></jsp:include>	
+	    	<jsp:include page="footer.jsp" flush="true"></jsp:include>
 		</div>
 	</body>
 </html>

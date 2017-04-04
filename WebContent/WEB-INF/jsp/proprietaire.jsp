@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="fr.resaLogement.beans.Proprietaire" %>
 <%@ page import="java.util.Iterator" %>
 
@@ -17,7 +18,7 @@
 	    <jsp:useBean id="proprietaires" class="java.util.ArrayList" scope="request" />
 	    
 	    <!-- header -->
-    	<jsp:include page="/jsp/header.jsp" flush="true"></jsp:include>
+    	<jsp:include page="header.jsp"></jsp:include>
     	
     	<!-- contenu -->
     	<div class="row main-content">
@@ -68,32 +69,27 @@
 							<div class="panel-body">
 								<table class="table table-striped">
 									<tr>
-										<th>Propiétaires</th>					
+										<th>Propriétaires</th>					
 										<th>Telephone</th>
 										<th>Email</th>
 									</tr>  								
-							<%
-							    for (Iterator<Proprietaire> it = proprietaires.iterator(); it.hasNext();) {
-							    	Proprietaire prop = it.next();
-							%>    	
-									    <tr>									    
-									    	<td><%=prop.getPrenom() + " " + prop.getNom()%></td>
-									    	<td><%=prop.getTelephone()%></td>
-									    	<td><%=prop.getEmail()%></td>
-									    </tr>
-							<%
-								}
-							%>
+									 <c:forEach items="${proprietaires}" var="proprietaire"  >
+									 	<tr>
+									          <td> ${proprietaire.prenom}  </td>
+									          <td> ${proprietaire.telephone}  </td>
+									          <td> ${proprietaire.email}  </td>
+									     </tr>
+									</c:forEach> 
 								</table>
 							</div>
 						</div>
 		    		</div>
-		    	</div>
+		    	</div>	
 	    	</div>
     	</div>	
     	
 	    <!-- footer -->
-	    <jsp:include page="/jsp/footer.jsp" flush="true"></jsp:include>	    	    		
+	    <jsp:include page="footer.jsp"></jsp:include>	    	    		
 	    	    	
 	</body>
 </html>

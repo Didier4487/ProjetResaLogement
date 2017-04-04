@@ -12,10 +12,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Recherche de logements</title>
 		<link href="css/bootstrap.css" rel="stylesheet"/>
-		<link href="css/chosen/!bootstrap-chosen.css" rel="stylesheet"/>
+		<link href="css/chosen/bootstrap-chosen.css" rel="stylesheet"/>
 		<link href="css/resaLogement.css" rel="stylesheet"/>
 		
-		<script type="text/javascript" src="js/jquery-1.12.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
 		<script type="text/javascript" src="js/chosen.jquery.js"></script>
 		
 		<script type="text/javascript">
@@ -55,7 +55,7 @@
 	    
 	    <div class="wrapper">
 		    <!-- header -->
-		    <jsp:include page="/jsp/header.jsp" flush="true"></jsp:include>
+		    <jsp:include page="header.jsp" flush="true"></jsp:include>
 		    
 			<!--  contenu -->
 		   <div class="row main-content">
@@ -127,23 +127,17 @@
 											<th>Adresse</th>
 											<th>Ville</th>
 											<th>Choix</th>
-										</tr>  
-										
-									<%
-									    for (Iterator<Logement> it = logements.iterator(); it.hasNext();) {
-									    	Logement leLogement = it.next();
-									%>    	
-										    <tr>
-										    	<td><%=leLogement.getProprietaire().getNom()%></td>
-										    	<td><%=leLogement.getProprietaire().getPrenom()%></td>
-										    	<td><%=leLogement.getDescription()%></td>
-										    	<td><%=leLogement.getAdresse().getNumRue() + " " + leLogement.getAdresse().getNomRue()%></td>
-										    	<td><%=leLogement.getAdresse().getCodePostal() + " " + leLogement.getAdresse().getVille()%></td>
-										    	<td><input type="checkbox" name="choix" value="<%=leLogement.getIdDisponibilite()%>" onclick="javascript:validerLogement();"></td>
-										    </tr>
-									<%
-										}
-									%>
+										</tr>  										
+											 <c:forEach items="${lesDisponibilites}" var="dispo"  >
+											 	<tr>
+											          <td> ${dispo.proprietaire.nom}  </td>
+											          <td> ${dispo.proprietaire.prenom}  </td>
+											          <td> ${dispo.logement.description}  </td>
+											          <td> ${dispo.adresse.adresseComplete}  </td>
+											          <td> ${dispo.adresse.ville}  </td>
+											          <td><input type="checkbox" name="choix" value="${dispo.idDisponibilite}" onclick="javascript:validerLogement();"></td>
+											     </tr>
+											</c:forEach>
 										</table>
 									</div>
 								</div>
@@ -154,7 +148,7 @@
 		   	</div>
 		   	
 		   	<!--  footer -->
-		   	<jsp:include page="/jsp/footer.jsp" flush="true"></jsp:include>			    	  
+		   	<jsp:include page="footer.jsp" flush="true"></jsp:include>			    	  
 		</div>
 	</body>
 </html>

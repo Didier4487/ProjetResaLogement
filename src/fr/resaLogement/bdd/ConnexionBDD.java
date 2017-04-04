@@ -20,6 +20,7 @@ public class ConnexionBDD {
 			Class.forName("com.mysql.jdbc.Driver");
 			conec = DriverManager.getConnection(url, login, password);			
 			stmt = conec.createStatement();
+			System.out.println("connection Ok");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

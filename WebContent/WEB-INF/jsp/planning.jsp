@@ -23,7 +23,7 @@
 	   <jsp:useBean id="descriptionLogement" class="java.lang.String" scope="request" />
     	
     	<!-- header -->
-    	<jsp:include page="/jsp/header.jsp" flush="true"></jsp:include>
+    	<jsp:include page="header.jsp" flush="true"></jsp:include>
     	
     	<!--  contenu -->
     	<div class="row main-content">
@@ -114,7 +114,7 @@
 	    </div>
 		
 		<!-- footer -->
-		<jsp:include page="/jsp/footer.jsp" flush="true"></jsp:include>		
+		<jsp:include page="footer.jsp" flush="true"></jsp:include>		
 	
 	</body>
 </html>

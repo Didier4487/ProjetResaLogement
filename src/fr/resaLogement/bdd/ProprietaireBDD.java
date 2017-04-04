@@ -27,8 +27,7 @@ public class ProprietaireBDD {
 				
 				proprietaire.setIdProprietaire(resultat.getInt(1));
 				proprietaire.setNom(resultat.getString(2));
-				proprietaire.setPrenom(resultat.getString(3));		
-				
+				proprietaire.setPrenom(resultat.getString(3));				
 				proprietaire.setTelephone(convertirTelephone(resultat.getString(4)));
 				proprietaire.setEmail(resultat.getString(5));
 				

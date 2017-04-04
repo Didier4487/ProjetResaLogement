@@ -35,7 +35,7 @@ public class RechercheLogements extends HttpServlet {
 		request.setAttribute("lesVilles", lesVilles);
 		request.setAttribute("lesDisponibilites", disponibiliteBDD.getDisponibilites(ville));
 
-		this.getServletContext().getRequestDispatcher("/jsp/rechercher.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/rechercher.jsp").forward(request, response);
 		
 	}
 	
@@ -66,7 +66,7 @@ public class RechercheLogements extends HttpServlet {
 		request.setAttribute("lesVilles", adresseBDD.listerVilles());
 		request.setAttribute("lesDisponibilites", disponibiliteBDD.getDisponibilites(ville));
 
-		this.getServletContext().getRequestDispatcher("/jsp/rechercher.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/rechercher.jsp").forward(request, response);
 		
 	}
 }

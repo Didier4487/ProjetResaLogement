@@ -47,7 +47,7 @@ public class AfficherPlanning extends HttpServlet {
 		request.setAttribute("lesVilles", lesVilles);
 		request.setAttribute("lesDisponibilites", disponibiliteBDD.getDisponibilites(ville));
 
-		this.getServletContext().getRequestDispatcher("/jsp/planning.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/planning.jsp").forward(request, response);
 		
 	}
 	
@@ -66,7 +66,7 @@ public class AfficherPlanning extends HttpServlet {
 		request.setAttribute("lesVilles", adresseBDD.listerVilles());
 		request.setAttribute("lesDisponibilites", disponibiliteBDD.getDisponibilitesLogement(ville, logement));
 
-		this.getServletContext().getRequestDispatcher("/jsp/planning.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/planning.jsp").forward(request, response);
 		
 	}
 }

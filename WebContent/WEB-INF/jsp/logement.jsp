@@ -20,7 +20,7 @@
 	    <jsp:useBean id="proprietaires" class="java.util.ArrayList" scope="request" />
     	
     	<!-- header -->
-    	<jsp:include page="/jsp/header.jsp" flush="true"></jsp:include>
+    	<jsp:include page="header.jsp" flush="true"></jsp:include>
     	
     	<!--  contenu -->
     	<div class="row main-content">
@@ -38,15 +38,10 @@
 											<div class="col-xs-12">																									
 												<div class="input-group">
 													<span class="input-group-addon">Choix du propriétaire</span>												
-													<select id="idProprietaire" name="idProprietaire"  size="1" class="form-control">
-										               	<%
-										               		for (Iterator<Proprietaire> it = proprietaires.iterator(); it.hasNext();) {
-														    	Proprietaire leProprietaire = it.next();
-														%>    	
-															   <option value="<%=leProprietaire.getIdProprietaire()%>"><%=leProprietaire.getNomPrenom()%></option>
-														<%
-															}
-														%>
+													<select id="idProprietaire" name="idProprietaire"  size="1" class="form-control">										     
+														 <c:forEach items="${proprietaires}" var="proprietaire"  >
+														 	<option value="${proprietaire.idProprietaire}"> ${proprietaire.prenom} ${proprietaire.nom}</option>
+														</c:forEach> 
 										           	</select>											
 												</div>
 											</div>
@@ -79,47 +74,41 @@
 				           </fieldset>
 				       </form>
 		    		</div>
-		    	</div>
+		    	</div>		    			    
 		    	
 		    	<div class="row">	
 		    		<div class="col-xs-12">
-	   					<div class="panel panel-default">
+		    			<div class="panel panel-default">
 		    				<div class="panel-heading">
 								<h4>Liste des logements</h4>
 							</div>
 							<div class="panel-body">
 								<table class="table table-striped">
-									<tr>										
+									<tr>				
 										<th>Description</th>
 										<th>Propriétaire</th>
 										<th>Adresse</th>
 										<th>Ville</th>
-									</tr>  
-						
-						<%
-						    for (Iterator<Logement> it = logements.iterator(); it.hasNext();) {
-						    	Logement leLogement = it.next();
-						%>    	
-								    <tr>								    	
-								    	<td><%=leLogement.getDescription()%></td>
-								    	<td><%=leLogement.getPrenomNom()%></td>
-								    	<td><%=leLogement.getAdresseComplete()%></td>
-								    	<td><%=leLogement.getVille()%></td>
-								    </tr>
-						<%
-							}
-						%>
+									</tr>  								
+									 <c:forEach items="${logements}" var="leLogement"  >
+									 	<tr>
+									          <td> ${leLogement.description}  </td>
+									          <td> ${leLogement.prenomNom}  </td>
+									          <td> ${leLogement.adresseComplete}  </td>
+									          <td> ${leLogement.ville}  </td>
+									     </tr>
+									</c:forEach> 
 								</table>
 							</div>
 						</div>
-					</div>
-				</div>
+		    		</div>
+		    	</div>
 		    	
 	    	</div>	
 	    </div>
 		
 		<!-- footer -->
-		<jsp:include page="/jsp/footer.jsp" flush="true"></jsp:include>		
+		<jsp:include page="footer.jsp" flush="true"></jsp:include>		
 	
 	</body>
 </html>

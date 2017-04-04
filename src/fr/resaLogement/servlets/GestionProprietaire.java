@@ -22,7 +22,7 @@ public class GestionProprietaire extends HttpServlet {
 		
 		request.setAttribute("proprietaires", proprietaires);
 
-		this.getServletContext().getRequestDispatcher("/jsp/proprietaire.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/proprietaire.jsp").forward(request, response);
 		
 	}
 	
@@ -40,7 +40,7 @@ public class GestionProprietaire extends HttpServlet {
 		
 		request.setAttribute("proprietaires", proprietaireBDD.getProprietaires());
 
-		this.getServletContext().getRequestDispatcher("/jsp/proprietaire.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/proprietaire.jsp").forward(request, response);
 		
 	}
 }

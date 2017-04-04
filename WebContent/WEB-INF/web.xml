@@ -60,4 +60,41 @@
 		<servlet-name>AfficherPlanning</servlet-name>
 		<url-pattern>/planning</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>InsererTypeLogement</servlet-name>
+		<servlet-class>fr.resaLogement.servlets.InsererTypeLogement</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>InsererTypeLogement</servlet-name>
+		<url-pattern>/insererTypeLogement</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ModifierTypeLogement</servlet-name>
+		<servlet-class>fr.resaLogement.servlets.ModifierTypeLogement</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ModifierTypeLogement</servlet-name>
+		<url-pattern>/modifierTypeLogement</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ValiderModifTypeLogement</servlet-name>
+		<servlet-class>fr.resaLogement.servlets.ValiderModifTypeLogement</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ValiderModifTypeLogement</servlet-name>
+		<url-pattern>/validerTypeLogement</url-pattern>
+	</servlet-mapping>
+	
+	<jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
+        </jsp-property-group>
+    </jsp-config>
 </web-app>
