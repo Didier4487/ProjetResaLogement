@@ -22,18 +22,22 @@ public class ValiderModifTypeLogement extends HttpServlet {
 		
 		TypeLogementBDD typeLogementBDD = new TypeLogementBDD();
 		
+		String action = request.getParameter("action");
 		String typeLogement = request.getParameter("typeLogement");
 		String descriptionType = request.getParameter("descriptionType");
 		String idInit = request.getParameter("idTypeLogement");
 		
 		int id = Integer.parseInt(idInit);
 		
-		typeLogementBDD.modifierLogement(id, typeLogement, descriptionType);
+		if (action.equals("m")) {
+			typeLogementBDD.modifierLogement(id, typeLogement, descriptionType);
+		}else{
+			typeLogementBDD.supprimerLogement(id);
+		}
 		
 		ArrayList<TypeLogement> lesTypeLogement = typeLogementBDD.getAllTypeLogement();
 		request.setAttribute("lestypeslogements", lesTypeLogement);
 
-		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/typeLogement.jsp").forward(request, response);
 		
 	}

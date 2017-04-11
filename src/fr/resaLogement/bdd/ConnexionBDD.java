@@ -10,7 +10,7 @@ public class ConnexionBDD {
 	
 	String url = "jdbc:mysql://localhost:3306/bddresalogement"; 
 	String login ="root";
-	String password = "";
+	String password = "root";
 	
 	protected Connection conec;
 	protected Statement stmt; 
@@ -20,8 +20,6 @@ public class ConnexionBDD {
 			Class.forName("com.mysql.jdbc.Driver");
 			conec = DriverManager.getConnection(url, login, password);			
 			stmt = conec.createStatement();
-			System.out.println("connection Ok");
-
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

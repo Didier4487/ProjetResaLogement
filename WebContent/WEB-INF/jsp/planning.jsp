@@ -40,34 +40,29 @@
 	   									<div class="row">
 											<div class="col-xs-12">																									
 												<div class="input-group">
-														<span class="input-group-addon">Choix d'une ville</span>																																											
-														<select id="choixVille" name="ville" size="1" class="form-control" onchange="document.forms[0].submit();" >
-											               	<%
-											               		int i = 0;
-											               		for (Iterator<Adresse> it = lesVilles.iterator(); it.hasNext();) {
-															    	Adresse laVille = it.next();
-															    	i++;
-															%>    	
-															   <option id="<%=i%>" <%if (villeLogement.equals(laVille.getVille())) {%>selected="selected"<%}%>><%=laVille.getVille()%></option>
-															<%
-																}
-															%>
-											           	</select>
+														<span class="input-group-addon">Choix d'une ville</span>	
+														<select id="choixVille" name="ville"  size="1" class="form-control" onchange="document.forms[0].submit();">
+															<option <c:if test="${ empty villeLogement }">selected</c:if>
+																		value="0">Choisir une ville</option>										     
+															 <c:forEach items="${lesVilles}" var="villes"  >
+															 	 <option <c:if test="${ villes.ville == villeLogement }">selected</c:if> value="<c:out value="${villes.ville }"/>">
+															 	  ${villes.ville}</option>
+															</c:forEach> 
+											           	</select>																																											
+														
 												</div>
 												<div class="input-group">
-														<span class="input-group-addon">Choix d'un logement</span>																																											
-														<select id="choixLogement" name="logement" size="1" class="form-control" onchange="document.forms[0].submit();" >
-											               	<%
-											               		int j = 0;
-											               		for (Iterator<Logement> it = lesLogements.iterator(); it.hasNext();) {
-															    	Logement leLogement = it.next();
-															    	j++;
-															%>    	
-															   <option id="<%=j%>" <%if (descriptionLogement.equals(leLogement.getDescription())) {%>selected="selected"<%}%>><%=leLogement.getDescription()%></option>
-															<%
-																}
-															%>
-											           	</select>
+														<span class="input-group-addon">Choix d'un logement</span>	
+														<select id="choixLogement" name="logement"  size="1" class="form-control" onchange="document.forms[0].submit();">	
+															<option <c:if test="${ empty descriptionLogement }">selected</c:if>
+																		value="0">Choisir un logement</option>										     
+															 <c:forEach items="${lesLogements}" var="logement"  >
+															 	<option <c:if test="${logement.description == descriptionLogement }">selected</c:if> value="<c:out value="${logement.description}"/>">
+															 	  ${logement.description}</option>
+														
+															</c:forEach> 
+											           	</select>																																										
+														
 												</div>
 																																		
 											</div>																			
@@ -83,7 +78,7 @@
 		    		<div class="col-xs-12">
 	   					<div class="panel panel-default">
 		    				<div class="panel-heading">
-								<h4>Planning des disponibilites : <%=descriptionLogement %> à <%=villeLogement %></h4>
+								<h4>Planning des disponibilités : <%=descriptionLogement %> à ${villeLogement}</h4>
 							</div>
 							<div class="panel-body">
 								<table class="table table-striped">
@@ -91,19 +86,13 @@
 										<th>Date</th>
 										<th>Disponibilité</th>
 									</tr>  
-						
-						<%
-						    for (Iterator<Disponibilite> it = lesDisponibilites.iterator(); it.hasNext();) {
-						    	Disponibilite laDisponibilite = it.next();
-						%>    	
-								    <tr>								    	
-								    	<td><%=laDisponibilite.getDateDispo()%></td>
-								    	<!--  <td><%=laDisponibilite.getDisponibilite()%></td>-->
-								    	<%if(laDisponibilite.getDisponibilite().equals("1")) {%><td>XXXXXXXXXX</td><%}else {%><td>Disponible</td><%}%>
-								    </tr>
-						<%
-							}
-						%>
+									
+									 <c:forEach items="${lesDisponibilites}" var="laDispo"  >
+									 	<tr>
+									          <td> ${laDispo.dateDispo}  </td>
+									          <td> ${laDispo.disponibilite}  </td>									
+									     </tr>
+									</c:forEach> 											
 								</table>
 							</div>
 						</div>

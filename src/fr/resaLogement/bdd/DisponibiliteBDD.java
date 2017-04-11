@@ -36,7 +36,42 @@ public class DisponibiliteBDD {
 					
 				disponibilite.setDateDispo(resultat.getString(1));
 				disponibilite.setDisponibilite(resultat.getString(2));
+				
+				disponibilites.add(disponibilite);								
+			}
+			stmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
+		return disponibilites;
+	}
+	
+	public ArrayList<Disponibilite> getDateDisponibilites(String ville) {
+		ArrayList<Disponibilite> disponibilites = new ArrayList<Disponibilite>();
+		
+		try {			
+			ConnexionBDD connexionBDD = new ConnexionBDD();
+			Statement stmt = connexionBDD.seConnecter();						
+			
+			String maRequete =  "SELECT DISTINCT dateDispo "
+											+ "FROM disponibilite "
+											+ "JOIN logement "
+											+ "ON disponibilite.logement_idLogement = logement.idLogement "
+											+ "JOIN adresse "
+											+ "ON adresse.idAdresse = logement.adresse_IdAdresse "
+											+ "JOIN proprietaire "
+											+ "ON proprietaire.idProprietaire = logement.proprietaire_idProprietaire "
+											+ "WHERE disponibilite = false AND adresse.ville = '" + ville + "'"
+											+ "ORDER BY dateDispo;";
+			
+			ResultSet resultat = stmt.executeQuery(maRequete);
+			
+			while (resultat.next()) {
+				Disponibilite disponibilite = new Disponibilite();
+					
+				disponibilite.setDateDispo(resultat.getString(1));
 				
 				disponibilites.add(disponibilite);								
 			}
@@ -94,19 +129,23 @@ public class DisponibiliteBDD {
 			ConnexionBDD connexionBDD = new ConnexionBDD();
 			Statement stmt = connexionBDD.seConnecter();						
 			
-			String maRequete =  "SELECT DISTINCT disponibilite.dateDispo, disponibilite.disponibilite ";
-			maRequete += "FROM disponibilite ";
-			maRequete += "JOIN logement ON disponibilite.logement_idLogement = logement.idLogement ";
-			maRequete += "JOIN adresse ON adresse.idAdresse = logement.adresse_IdAdresse ";
-			maRequete += "JOIN proprietaire ON proprietaire.idProprietaire = logement.proprietaire_idProprietaire ";
-			maRequete += "WHERE logement.description = '" + description + "' AND adresse.ville = '" + ville + "';";
+			String maRequete =  "SELECT DISTINCT disponibilite.dateDispo, disponibilite.disponibilite "
+											+ " FROM disponibilite "
+											+ " JOIN logement ON disponibilite.logement_idLogement = logement.idLogement "
+											+ " JOIN adresse ON adresse.idAdresse = logement.adresse_IdAdresse "
+											+ " JOIN proprietaire ON proprietaire.idProprietaire = logement.proprietaire_idProprietaire "
+											+ " WHERE logement.description = '" + description + "' AND adresse.ville = '" + ville + "';";
 			ResultSet resultat = stmt.executeQuery(maRequete);
 						
 			while (resultat.next()) {
 				Disponibilite disponibilite = new Disponibilite();
 				
 				disponibilite.setDateDispo(resultat.getString(1));
-				disponibilite.setDisponibilite(resultat.getString(2));
+				if (resultat.getString(2).contentEquals("0")) {
+					disponibilite.setDisponibilite("DISPONIBLE");
+				}else{
+					disponibilite.setDisponibilite("XXXXXXXXXX");
+				}
 				
 				disponibilites.add(disponibilite);								
 			}

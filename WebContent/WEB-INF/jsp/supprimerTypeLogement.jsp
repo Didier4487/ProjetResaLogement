@@ -25,15 +25,10 @@
 				        	<fieldset >
 				        		<div class="panel panel-primary">
 					        		<div class="panel-heading">
-					        			<c:if test="${ action == modification }"><h4>Modifier un type de logement</h4></c:if>
-					        			<c:if test="${ action == suppression }"><h4>Supprimer un type de logement</h4></c:if>
+					        			<h4>Modifier un type de logement</h4>	
 					        		</div>
-	   								<div class="panel-body">	
-	   									<div class="input-group cache">
-											<span class="input-group-addon" >action </span>
-											<input type="text" id="action" name="action" class="form-control"  value="${action}">
-										</div> 		     
-	 									<div class="cache">
+	   								<div class="panel-body">		     
+	 									<div class="input-group">
 											<span class="input-group-addon" >id </span>
 											<input type="text" id="descriptionType" name="idTypeLogement" class="form-control"  value="${leTypeLogement.idTypeLogement}">
 										</div> 							
@@ -47,9 +42,7 @@
 										</div>     									
 	   								</div>       
               						<div class="panel-footer">
-              							<c:if test="${ action == modification }"><input type="submit" value="Modification" class="btn btn-primary" /></c:if>
-										<c:if test="${ action == suppression }"><input type="submit" value="Suppression" class="btn btn-danger" /></c:if>
-									
+										<input type="submit" value="Modification" class="btn btn-primary" />
 									</div>
 								</div>
 				           </fieldset>

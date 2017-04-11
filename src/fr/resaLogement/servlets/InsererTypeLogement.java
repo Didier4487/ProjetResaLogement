@@ -33,8 +33,6 @@ public class InsererTypeLogement extends HttpServlet {
 		String typeLogement = request.getParameter("typeLogement");
 		String descriptionType = request.getParameter("descriptionType");
 		
-		System.out.println(typeLogement +  " " + descriptionType);
-		
 		if (typeLogement.length()>1){
 			typeLogementBDD.setTypeLogement(typeLogement, descriptionType);			
 		}

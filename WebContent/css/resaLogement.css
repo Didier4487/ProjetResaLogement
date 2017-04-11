@@ -157,3 +157,6 @@ footer .bottom {
 	color: white;
 }
 
+.cache {
+	display: none;
+}

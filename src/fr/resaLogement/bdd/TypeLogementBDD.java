@@ -90,6 +90,23 @@ public void modifierLogement(int id,String typeLogement, String descriptionType)
 	}
 
 }
+
+public void supprimerLogement(int id) {
+	
+	try {
+		ConnexionBDD connexionBDD = new ConnexionBDD();
+		Statement stmt = connexionBDD.seConnecter();
+		
+		String maRequete = "DELETE FROM typeLogement WHERE idTypeLogement = " + id + ";"; 
+		
+		stmt.executeUpdate(maRequete);
+		stmt.close();
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+
+}
 	
 	public void setTypeLogement(String typeLogement,String descriptionType) {
 			

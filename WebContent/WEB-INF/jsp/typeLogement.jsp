@@ -79,8 +79,8 @@
 										 	<tr>
 										          <td> ${type.typeLogement}  </td>
 										          <td> ${type.descriptionType}  </td>
-										          <td><input type="submit" name=${type.idTypeLogement} value="Modification" class="btn btn-xs btn-warning" /></td>
-										          <td><input type="submit" name=${type.idTypeLogement} value="Suppression" class="btn btn-xs btn-danger" /></td>
+										          <td><input type="submit" name=${type.idTypeLogement}m value="Modification" class="btn btn-xs btn-warning" /></td>
+										          <td><input type="submit" name=${type.idTypeLogement}s value="Suppression" class="btn btn-xs btn-danger" /></td>
 										     </tr>
 										</form>
 									</c:forEach> 

@@ -66,44 +66,38 @@
 					        	<fieldset >
 					        		<div class="panel panel-primary">
 						        		<div class="panel-heading">
-						        			<h4>Recherche d'un logement</h4>	
+						        			<h4>Recherche d'un logement</h4>
 						        		</div>
 										<div class="panel-body">
 											<div class="row">
 												<div class="col-xs-12">																									
 													<div class="input-group">
-														<span class="input-group-addon">Choix d'une ville</span>																																											
-														<select id="choixVille" name="ville" size="1" class="form-control" onchange="document.forms[0].submit();" >
-											               	<%
-											               		int i = 0;
-											               		for (Iterator<Adresse> it = lesVilles.iterator(); it.hasNext();) {
-															    	Adresse laVille = it.next();
-															    	i++;
-															%>    	
-															   <option id="<%=i%>" <%if (villeLogement.equals(laVille.getVille())) {%>selected="selected"<%}%>><%=laVille.getVille()%></option>
-															<%
-																}
-															%>
-											           	</select>
+														<span class="input-group-addon">Choix d'une ville</span>
+														<select id="choixVille" name="ville"  size="1" class="form-control" onchange="document.forms[0].submit();">
+															<option <c:if test="${ empty villeLogement }">selected</c:if>
+																		value="0">Choisir une ville</option>										     
+															 <c:forEach items="${lesVilles}" var="villes"  >
+															 	 <option <c:if test="${ villes.ville == villeLogement }">selected</c:if> value="<c:out value="${villes.ville }"/>">
+															 	  ${villes.ville}</option>
+															</c:forEach> 
+											           	</select>	
+														
 													</div>
 												</div>										
 											</div>
 											<div class="row">
 												<div class="col-xs-12">																									
 													<div class="input-group">
-														<span class="input-group-addon">Choix d'une date</span>																												
-														<select id="choixDate" name="dateDispo" size="1" class="form-control" onchange="document.forms[0].submit();">
-											               	<%
-											               		int j = 0;
-											               		for (Iterator<Disponibilite> it = lesDisponibilites.iterator(); it.hasNext();) {
-															    	Disponibilite laDate = it.next();
-															    	j++;
-															%>    	
-															   <option id="<%=j%>" <%if (laDateDispo.equals(laDate.getDateDispo())) {%>selected="selected"<%}%>><%=laDate.getDateDispo()%></option>
-															<%
-																}
-															%>
+														<span class="input-group-addon">Choix d'une datle</span>
+														<select id="choixDate" name="dateDispo"  size="1" class="form-control" onchange="document.forms[0].submit();">
+															<option <c:if test="${ empty laDate }">selected</c:if>
+																		value="0">Choisir une date</option>										     
+															 <c:forEach items="${lesDisponibilites}" var="lesDispo"  >
+															 	 <option <c:if test="${ lesDispo.dateDispo == laDate }">selected</c:if> value="<c:out value="${lesDispo.dateDispo }"/>">
+															 	  ${lesDispo.dateDispo}</option>
+															</c:forEach> 
 											           	</select>
+													
 													</div>
 												</div>											
 											</div>
@@ -128,14 +122,14 @@
 											<th>Ville</th>
 											<th>Choix</th>
 										</tr>  										
-											 <c:forEach items="${lesDisponibilites}" var="dispo"  >
+											 <c:forEach items="${logements}" var="logement"  >
 											 	<tr>
-											          <td> ${dispo.proprietaire.nom}  </td>
-											          <td> ${dispo.proprietaire.prenom}  </td>
-											          <td> ${dispo.logement.description}  </td>
-											          <td> ${dispo.adresse.adresseComplete}  </td>
-											          <td> ${dispo.adresse.ville}  </td>
-											          <td><input type="checkbox" name="choix" value="${dispo.idDisponibilite}" onclick="javascript:validerLogement();"></td>
+											          <td> ${logement.proprietaire.nom}  </td>
+											          <td> ${logement.proprietaire.prenom}  </td>
+											          <td> ${logement.description}  </td>
+											          <td> ${logement.adresse.numRue} ${logement.adresse.nomRue}  </td>
+											          <td> ${logement.adresse.ville}  </td>
+											          <td><input type="checkbox" name="choixLogement" value="${logement.idDisponibilite}" onclick="javascript:validerLogement();"></td>
 											     </tr>
 											</c:forEach>
 										</table>

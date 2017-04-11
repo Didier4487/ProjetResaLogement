@@ -22,18 +22,20 @@ public class RechercheLogements extends HttpServlet {
 		AdresseBDD adresseBDD = new AdresseBDD();
 		DisponibiliteBDD disponibiliteBDD = new DisponibiliteBDD();
 		
-		String ville = "";
+		String ville = null;
+		String laDate = null;
 		
 		ArrayList<Adresse> lesVilles = adresseBDD.listerVilles();
-		Adresse adresse = null;
-		if (lesVilles.size() > 0) {
-			adresse = (Adresse) lesVilles.get(0);
-			ville = adresse.getVille();
-		}
+		//Adresse adresse = null;
+		//if (lesVilles.size() > 0) {
+		//	adresse = (Adresse) lesVilles.get(0);
+		//	ville = adresse.getVille();
+		//}
 		
+		request.setAttribute("laDate", laDate);
 		request.setAttribute("villeLogement", ville);
 		request.setAttribute("lesVilles", lesVilles);
-		request.setAttribute("lesDisponibilites", disponibiliteBDD.getDisponibilites(ville));
+		request.setAttribute("lesDisponibilites", disponibiliteBDD.getDateDisponibilites(ville));
 
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/rechercher.jsp").forward(request, response);
 		
@@ -47,9 +49,9 @@ public class RechercheLogements extends HttpServlet {
 		
 		String ville = request.getParameter("ville");
 		String dateDispo = request.getParameter("dateDispo");
-		String idDispo = request.getParameter("choix");
+		String idDispo = request.getParameter("choixLogement");
 		
-		if(idDispo != null) {
+		if(idDispo != null && idDispo.length() > 0) {
 			int convertIdDispo = Integer.parseInt(idDispo);
 			disponibiliteBDD.reserverLogement(convertIdDispo);
 			request.setAttribute("logements", logementBDD.getLogementsComplets(ville,dateDispo));
@@ -60,11 +62,11 @@ public class RechercheLogements extends HttpServlet {
 		if (dateDispo != null) {
 			request.setAttribute("logements", logementBDD.getLogementsComplets(ville,dateDispo));
 			request.setAttribute("laDateDispo", dateDispo);
-			System.out.println("date dispo Ok");
+			request.setAttribute("laDate", dateDispo);
 		}
 		
 		request.setAttribute("lesVilles", adresseBDD.listerVilles());
-		request.setAttribute("lesDisponibilites", disponibiliteBDD.getDisponibilites(ville));
+		request.setAttribute("lesDisponibilites", disponibiliteBDD.getDateDisponibilites(ville));		
 
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/rechercher.jsp").forward(request, response);
 		

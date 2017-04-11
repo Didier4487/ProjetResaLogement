@@ -19,11 +19,12 @@ public class LogementBDD {
 			ConnexionBDD connexionBDD = new ConnexionBDD();
 			Statement stmt = connexionBDD.seConnecter();
 									
-			String maRequete =  "SELECT nom, prenom, description, numRue, nomRue, codePostal, ville, dateDispo, idDisponibilite, disponibilite FROM proprietaire ";
-			maRequete += "JOIN logement ON proprietaire.idProprietaire = logement.proprietaire_idProprietaire ";
-			maRequete += "JOIN adresse ON adresse.idAdresse = logement.adresse_IdAdresse ";
-			maRequete += "JOIN disponibilite ON disponibilite.logement_idLogement = logement.idLogement ";
-			maRequete += "WHERE ville = '" + ville + "' AND disponibilite = " + false + " AND dateDispo = '" + dateDispo + "';";						
+			String maRequete =  "SELECT nom, prenom, description, numRue, nomRue, codePostal, ville, dateDispo, idDisponibilite, disponibilite "
+					+ " FROM proprietaire "
+					+ " JOIN logement ON proprietaire.idProprietaire = logement.proprietaire_idProprietaire "
+					+ " JOIN adresse ON adresse.idAdresse = logement.adresse_IdAdresse "
+					+ " JOIN disponibilite ON disponibilite.logement_idLogement = logement.idLogement "
+					+ " WHERE ville = '" + ville + "' AND disponibilite = " + false + " AND dateDispo = '" + dateDispo + "';";						
 			
 			ResultSet resultat = stmt.executeQuery(maRequete);
 			
@@ -68,9 +69,9 @@ public class LogementBDD {
 			ConnexionBDD connexionBDD = new ConnexionBDD();
 			Statement stmt = connexionBDD.seConnecter();
 			
-			String maRequete =  "SELECT nom, prenom, description, numRue, nomRue, codePostal, ville ";
-			maRequete += " FROM proprietaire JOIN logement ON proprietaire.idProprietaire = logement.proprietaire_idProprietaire";
-			maRequete += "  JOIN adresse ON adresse.idAdresse = logement.adresse_IdAdresse;";
+			String maRequete =  "SELECT nom, prenom, description, numRue, nomRue, codePostal, ville "
+											+ " FROM proprietaire JOIN logement ON proprietaire.idProprietaire = logement.proprietaire_idProprietaire "
+											+ " JOIN adresse ON adresse.idAdresse = logement.adresse_IdAdresse;";
 			
 			ResultSet resultat = stmt.executeQuery(maRequete);
 			
@@ -126,7 +127,8 @@ public class LogementBDD {
 			ConnexionBDD connexionBDD = new ConnexionBDD();
 			Statement stmt = connexionBDD.seConnecter();
 			
-			String maRequete = "INSERT INTO logement(description, proprietaire_idProprietaire, adresse_idAdresse) VALUES('" + description +"', '" + idProprietaire + "', '" + idAdresse + "');";
+			String maRequete = "INSERT INTO logement(description, proprietaire_idProprietaire, adresse_idAdresse) "
+					+ "VALUES('" + description +"', '" + idProprietaire + "', '" + idAdresse + "');";
 			
 			stmt.executeUpdate(maRequete);
 			stmt.close();
@@ -168,10 +170,10 @@ public class LogementBDD {
 			ConnexionBDD connexionBDD = new ConnexionBDD();
 			Statement stmt = connexionBDD.seConnecter();
 			
-			String maRequete =  "SELECT nom, prenom, description, numRue, nomRue, codePostal, ville ";
-			maRequete += " FROM proprietaire JOIN logement ON proprietaire.idProprietaire = logement.proprietaire_idProprietaire";
-			maRequete += "  JOIN adresse ON adresse.idAdresse = logement.adresse_IdAdresse ";
-			maRequete += " WHERE ville = '" + ville + "';";
+			String maRequete =  "SELECT nom, prenom, description, numRue, nomRue, codePostal, ville "
+					+ " FROM proprietaire JOIN logement ON proprietaire.idProprietaire = logement.proprietaire_idProprietaire "
+					+ " JOIN adresse ON adresse.idAdresse = logement.adresse_IdAdresse "
+					+ "  WHERE ville = '" + ville + "';";
 			
 			ResultSet resultat = stmt.executeQuery(maRequete);
 			
